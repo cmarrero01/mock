@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:rim="http://www.blackberry.com/ns/widgets"
+xmlns:android="http://schemas.android.com/apk/res/android"
+           id="org.apache.cordova.mock"
+      version="0.3.4">
+
+    <name>MOck</name>
+    <description>Cordova Mock Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,mock</keywords>
+
+    <!-- android -->
+    <platform name="android">
+
+        <js-module src="www/mock.js" name="Coordinates">
+            <clobbers target="Coordinates" />
+        </js-module>
+
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="mock">
+	            <param name="android-package" value="org.apache.cordova.mock.CheckMock"/>
+	        </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        </config-file>
+
+        <source-file src="src/android/CheckMock.java" target-dir="src/org/apache/cordova/mock" />
+    </platform>
+
+    <!--&lt;!&ndash; ios &ndash;&gt;-->
+    <!--<platform name="ios">-->
+
+        <!--<js-module src="www/mock.js" name="Coordinates">-->
+            <!--<clobbers target="Coordinates" />-->
+        <!--</js-module>-->
+
+        <!--<config-file target="config.xml" parent="/*">-->
+	        <!--<feature name="mock">-->
+	            <!--<param name="ios-package" value="CheckMock"/>-->
+	        <!--</feature>-->
+        <!--</config-file>-->
+        <!--<header-file src="src/ios/CheckMock.h" />-->
+	    <!--<source-file src="src/ios/CheckMock.m" />-->
+    <!--</platform>-->
+
+
+</plugin>
